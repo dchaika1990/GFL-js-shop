@@ -1,0 +1,25 @@
+.special-header {
+   margin-top: 0;
+   margin-bottom: 0;
+
+   &-pattern {
+      overflow: hidden;
+
+      span {
+         position: relative;
+         padding-right: 20px;
+
+         &:after {
+            content: '';
+            display: inline-block;
+            background: url("../img/pattern.png");
+            height: 20px;
+            width: 800%;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-60%);
+            left: 100%;
+         }
+      }
+   }
+}

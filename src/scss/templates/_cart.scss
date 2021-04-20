@@ -1,0 +1,27 @@
+.cart{
+   &-media{
+      a{
+         display: block;
+         overflow: hidden;
+      }
+      img{
+         width: 100%;
+         transition: all .3s ease-in-out;
+      }
+      &:hover img{
+         transform: scale(1.05);
+         opacity: .8;
+      }
+   }
+   &-content{
+      padding: 10px 15px;
+      border:{
+         left: 1px solid $borderColor;
+         bottom: 1px solid $borderColor;
+         right: 1px solid $borderColor;
+      }
+   }
+   &-date h6{
+      margin-top: 5px;
+   }
+}

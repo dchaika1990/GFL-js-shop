@@ -1,0 +1,20 @@
+.page_footer{
+   .grid-container{
+      &::before,
+      &::after{
+         content: '';
+         display: inline-block;
+         width: 15px;
+         position: absolute;
+         top: 0;
+         bottom: 0;
+         background-color: $lightColor;
+      }
+      &::before{
+         left: 0;
+      }
+      &::after{
+         right: 0;
+      }
+   }
+}

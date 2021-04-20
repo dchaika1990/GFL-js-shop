@@ -1,0 +1,80 @@
+/*
+   Grid
+ */
+
+.grid-container {
+   position: relative;
+   width: 100%;
+   padding-right: 15px;
+   padding-left: 15px;
+   margin-right: auto;
+   margin-left: auto;
+}
+
+@each $breakpoint-abbr, $breakpoint-value in $container-max-widths {
+   @media (min-width: #{$breakpoint-abbr}) {
+      .grid-container {
+         max-width: #{$breakpoint-value};
+      }
+   }
+}
+
+[class*='grid-cols-']{
+   position: relative;
+   display: grid;
+}
+
+@for $width from 1 through $columns {
+   .grid-cols-#{$width} {
+      grid-template-columns: repeat(#{$width}, 1fr);
+   }
+   .column-span-#{$width}{
+      grid-column: span #{$width};
+   }
+   .row-span-#{$width}{
+      grid-row: span #{$width};
+   }
+}
+
+@each $breakpoint-abbr, $breakpoint-value in $grid-breakpoints {
+   @media (min-width: #{$breakpoint-value}) {
+      @for $width from 1 through $columns {
+         .grid-cols-#{$breakpoint-abbr}-#{$width} {
+            display: grid;
+            grid-template-columns: repeat(#{$width}, 1fr);
+         }
+      }
+   }
+}
+
+@each $gap in $gaps {
+   .gap-#{$gap}{
+      grid-gap: #{$gap}px;
+   }
+}
+
+
+
+.align-center{
+   align-items: center;
+}
+
+.align-top{
+   align-items: start;
+}
+
+.align-bottom{
+   align-items: end;
+}
+
+.justify-center{
+   justify-self: center;
+}
+
+.justify-end{
+   justify-self: end;
+}
+
+.justify-start{
+   justify-self: start;
+}

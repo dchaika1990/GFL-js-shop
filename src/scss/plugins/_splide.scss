@@ -1,0 +1,19 @@
+/*
+   Splide slider
+ */
+
+.splide--nav > {
+   .splide__track > {
+      .splide__list > {
+         .splide__slide{
+            border: unset;
+            transition: opacity .3s ease-in-out;
+            &:hover{
+               cursor: pointer;
+               background-size: 200%;
+               opacity: .8;
+            }
+         }
+      }
+   }
+}

@@ -1,0 +1,56 @@
+.light-bg {
+  background-color: $lightColor;
+}
+
+.hero-bg {
+  background-color: $greyColor;
+}
+
+.dark-bg {
+  background-color: $colorDark;
+}
+
+.maincolor-bg {
+  background-color: $colorMain;
+}
+
+.maincolor2-bg {
+  background-color: $colorMain2;
+}
+
+.color-main{
+  color: $colorMain!important;
+}
+
+.color-main2{
+  color: $colorMain2!important;
+}
+
+.links-maincolor{
+  color: $colorMain!important;
+  &:hover{
+    color: $colorDark!important;
+  }
+}
+
+.links-light{
+  color: $lightColor!important;
+  &:hover{
+    color: $colorMain2!important;
+  }
+}
+
+.color-dark {
+  color: $colorDark;
+}
+
+.color-font{
+  color: $fontColor;
+}
+
+[class*='bg-'] {
+  color: $lightColor;
+  a, h1, h2, h3, h4, h5, h6 {
+    color: $lightColor;
+  }
+}

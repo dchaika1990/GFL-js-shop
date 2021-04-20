@@ -1,0 +1,82 @@
+@each $value in $font-size-helpers {
+   .fs-#{$value} {
+      font-size: #{$value}px;
+   }
+}
+
+.fw-100 {
+   font-weight: 100;
+}
+
+.fw-300,
+.thin {
+   font-weight: 300;
+}
+
+.fw-400 {
+   font-weight: 400;
+}
+
+.fw-500 {
+   font-weight: 500;
+}
+
+.fw-700,
+.bolder {
+   font-weight: 700;
+}
+
+.fw-900,
+.bold {
+   font-weight: 900;
+}
+
+.overflow-hidden {
+   overflow: hidden;
+   position: relative;
+   z-index: 2;
+}
+
+.overflow-visible {
+   overflow: visible;
+   position: relative;
+   z-index: 2;
+}
+
+.z-index-0 {
+   z-index: 0;
+}
+.z-index-2 {
+   z-index: 2;
+}
+
+@each $breakpoint-abbr, $breakpoint-value in $grid-breakpoints {
+   //showing on breakpoint and above
+   @media (min-width: #{$breakpoint-value}) {
+      .visible-above-#{$breakpoint-abbr} {
+         display: block !important;
+      }
+   }
+   //showing on breakpoint and below
+   @media (max-width: #{$breakpoint-value - 1px}) {
+      .visible-below-#{$breakpoint-abbr} {
+         display: block !important;
+      }
+   }
+}
+
+//hiding elements below certain breakpoints
+@each $breakpoint-abbr, $breakpoint-value in $grid-breakpoints {
+   //hiding on breakpoint and below
+   @media (max-width: #{$breakpoint-value - 1px}) {
+      .hidden-below-#{$breakpoint-abbr} {
+         display: none !important;
+      }
+   }
+   //hiding on breakpoint and above
+   @media (min-width: #{$breakpoint-value}) {
+      .hidden-above-#{$breakpoint-abbr} {
+         display: none !important;
+      }
+   }
+}

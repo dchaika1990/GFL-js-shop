@@ -1,0 +1,47 @@
+/*
+   Widgets
+ */
+
+.widget {
+   &-title {
+      margin-bottom: 1.2rem;
+   }
+
+   &-twitter {
+      .date {
+         display: block;
+         margin-top: 10px;
+      }
+
+      li {
+         list-style: none;
+         padding-top: 10px;
+         padding-bottom: 10px;
+
+         &:first-child {
+            padding-top: 0;
+         }
+
+         &:last-child {
+            padding-bottom: 0;
+         }
+      }
+   }
+
+   &-contacts {
+      .social-icons{
+         display: flex;
+         list-style: none;
+         li:not(:last-child){
+            margin-right: 5px;
+         }
+         a:hover{
+            opacity: .5;
+         }
+      }
+   }
+
+   p {
+      line-height: 1.2em;
+   }
+}

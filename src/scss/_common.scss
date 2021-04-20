@@ -1,0 +1,137 @@
+/*
+** General Styles for HTML tags
+*/
+html {
+   width: 100%;
+   height: 100%;
+   position: relative;
+   overflow: visible;
+}
+
+::selection {
+   color: $lightColor;
+   background-color: $colorMain;
+}
+
+::placeholder {
+   color: gray;
+}
+
+*:focus{
+   outline: unset;
+}
+
+body {
+   font-family: $fontBody;
+   font-size: 12px;
+   font-weight: 400;
+   background-color: $lightColor;
+   overflow: visible;
+   overflow-x: hidden;
+   overflow-y: scroll;
+   position: relative;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+   font-weight: 400;
+   line-height: 1.1em;
+   letter-spacing: 0.04em;
+   word-break: break-word;
+   text-transform: uppercase;
+   font-family: $fontHeaders;
+   //fix for Raleway numbers
+   font-variant-numeric: lining-nums;
+   font-feature-settings: "lnum" 1;
+}
+
+h1 {
+   font-size: 35px;
+   margin-top: 2.5rem;
+   margin-bottom: 1rem;
+}
+
+h2 {
+   font-size: 30px;
+   margin-top: 2.5rem;
+   margin-bottom: 1rem;
+}
+
+h3 {
+   font-size: 25px;
+   margin-top: 2.5rem;
+   margin-bottom: 1rem;
+}
+
+h4 {
+   font-size: 22px;
+   margin-top: 2.5rem;
+   margin-bottom: 1rem;
+}
+
+h5 {
+   font-size: 20px;
+   margin-top: 2.5rem;
+   margin-bottom: 1rem;
+}
+
+h6 {
+   font-size: 12px;
+   letter-spacing: 0.3px;
+   margin-top: 2.5rem;
+   margin-bottom: 1rem;
+}
+
+
+h1:first-child,
+h2:first-child,
+h3:first-child,
+h4:first-child,
+h5:first-child,
+h6:first-child {
+   margin-top: 0;
+}
+
+h1:last-child,
+h2:last-child,
+h3:last-child,
+h4:last-child,
+h5:last-child,
+h6:last-child {
+   margin-bottom: 0;
+}
+
+p {
+   margin-bottom: 1.5em;
+   line-height: 1.18rem;
+
+   &:last-child {
+      margin-bottom: 0;
+   }
+}
+
+a {
+   text-decoration: none;
+   transition: all 0.3s ease-in-out;
+
+   &:hover {
+      text-decoration: none;
+   }
+}
+
+img {
+   max-width: 100%;
+   height: auto;
+   overflow: hidden;
+   vertical-align: middle;
+   border-style: none;
+}
+
+ul {
+   padding: 0;
+   margin: 0;
+}

@@ -1,0 +1,38 @@
+/*
+** Variables
+*/
+
+//Variables For Color
+$colorMain: #e8663c;
+$colorMain2: #f3b29d;
+$fontColor: #414141;
+$lightColor: #ffffff;
+$greyColor: #b9b9b9;
+$borderColor: #dbdbdb;
+$colorDark: #b9b9b9;
+
+//Variables For Grid
+$columns: 12;
+$gaps: 5 10 15 20 25 30 35 40 45 50 60 65 70 80;
+
+$container-max-widths: (
+        576px: 540px,
+        768px: 720px,
+        992px: 960px,
+        1200px: 970px
+) !default;
+
+$grid-breakpoints: (
+        sm: 576px,
+        md: 768px,
+        lg: 992px,
+        xl: 1200px
+) !default;
+
+$fontBody: 'Open sans', sans-serif;
+$fontHeaders: 'Bebas Neue', cursive;
+
+$section-vertical-padding: 150 240 330;
+$font-size-helpers: 16 17 18 19 20 21 22 23 24 25 26 27 28;
+$dividers-height: 0 10 15 20 30 40 45 50 60 100 200;
+$spacers: 0 10 15 20 30 35 40 50 60;

@@ -1,0 +1,24 @@
+.icon-box{
+  &-header{
+    display: flex;
+    align-items: center;
+    &:not(:last-child){
+      margin-bottom: 20px;
+      @media(min-width: 991px){
+        margin-bottom: 25px;
+      }
+    }
+    img{
+      margin-right: 23px;
+      flex-shrink: 0;
+    }
+  }
+  &-body{
+    &:not(:last-child){
+      margin-bottom: 20px;
+    }
+  }
+  &-footer{
+
+  }
+}

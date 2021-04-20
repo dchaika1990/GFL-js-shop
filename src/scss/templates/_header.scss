@@ -1,0 +1,126 @@
+/*
+* Header Styles
+*/
+.page_header_wrap{
+   box-shadow: 0 1px 12px 2px $borderColor;
+}
+.page_header{
+   z-index: 1;
+   font-family: $fontHeaders;
+   min-height: 78px;
+   .logo{
+      font-size: 45px;
+      letter-spacing: 1px;
+      color: $colorMain;
+      text-transform: uppercase;
+   }
+   &.fix-header{
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+   }
+   .menu-btn{
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      height: 50px;
+      width: 50px;
+      transform: translateY(-50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: $colorMain;
+      z-index: 3;
+      transition: right .3s ease-in-out;
+      span{
+         width: 25px;
+         height: 2px;
+         background-color: $lightColor;
+         display: inline-block;
+         position: relative;
+         transition: all .3s ease-in-out;
+         &::before,
+         &::after{
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 2px;
+            left: 0;
+            background-color: $lightColor;
+         }
+         &::before{
+            top: -6px;
+         }
+         &::after{
+            bottom: -6px;
+         }
+      }
+      &:hover{
+         background-color: $colorMain2;
+      }
+   }
+   .nav{
+      font-size: 20px;
+      letter-spacing: 1px;
+      &-item{
+         list-style: none;
+         &.active > a{
+            color: $colorMain;
+         }
+      }
+      &-menu{
+         text-transform: uppercase;
+      }
+   }
+
+   @media (min-width: 320px) and (max-width: 991px) {
+      .nav{
+         position: fixed;
+         width: 0;
+         height: 100%;
+         z-index: 2;
+         left: 0;
+         top: 0;
+         background-color: rgba(0,0,0, .9);
+         overflow-x: hidden;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         transition: all .5s ease-in-out;
+         &-menu{
+            text-align: center;
+         }
+         &-btn{
+            position: absolute;
+            right: 30px;
+            top: 30px;
+         }
+         &.nav-show{
+            width: 100%;
+         }
+      }
+   }
+   @media (min-width: 992px) {
+      .menu-btn{
+         display: none;
+      }
+      .nav{
+         grid-column: span 2;
+         position: relative;
+         &-menu{
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 10px;
+         }
+         &-item{
+            &:not(:last-child){
+               margin-right: 24px;
+            }
+         }
+         &-btn{
+            display: none;
+         }
+      }
+   }
+}

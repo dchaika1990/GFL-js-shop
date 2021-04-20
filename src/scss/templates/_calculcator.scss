@@ -1,0 +1,27 @@
+.calculator{
+   min-width: 300px;
+   max-width: 450px;
+   width: 100%;
+   margin-left: auto;
+   margin-right: auto;
+   font-size: 20px;
+   padding: 30px;
+   border: 1px solid $borderColor;
+   border-radius: 5px;
+   background-color: $colorMain;
+
+   &-btn,
+   &-input{
+      padding: 25px 10px;
+      border-radius: 5px;
+      border: unset;
+   }
+
+   &-btn{
+      transition: all .3s ease-in-out;
+      &:hover{
+         cursor: pointer;
+         background-color: $lightColor;
+      }
+   }
+}
