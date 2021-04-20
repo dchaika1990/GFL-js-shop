@@ -1,9 +1,10 @@
 import fixHeader from "./modules/fixHeader";
-import renderGoods from "./modules/renderGoods";
-import cartComponent from "./modules/renderCard";
+import app from "./app";
 
 document.addEventListener('DOMContentLoaded', () =>{
     fixHeader('.page_header');
-    renderGoods('.goods');
-    cartComponent('.cart', '.cart-wrap');
+    app.init({
+        goodsSelector: '.goods',
+        cartSelector: '.cart'
+    });
 })

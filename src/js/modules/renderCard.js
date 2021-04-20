@@ -1,11 +1,11 @@
-const cartComponent = (selector, wrapSelector) => {
+const cartComponent = (selector) => {
 	const selectCart = document.querySelector(selector);
-	const cartWrap = selectCart.querySelector(wrapSelector);
+	const cartWrap = selectCart.querySelector('.cart-wrap');
 	const totalWrap = selectCart.querySelector('.cart-total');
 	const goods = JSON.parse(localStorage.getItem('goods'));
 
 	const cart = {
-		cartGoods: [],
+		cartGoods: localStorage.cart ? JSON.parse(localStorage.getItem('cart')) : [],
 		countGoods() {
 			const count = this.cartGoods.reduce((sum, good) => sum + good.count, 0);
 			selectCart.querySelector('.cart-count').textContent = `Cart (${count})`;
@@ -33,6 +33,10 @@ const cartComponent = (selector, wrapSelector) => {
 			totalWrap.textContent = `Total ${this.totalPrice()}`;
 			cartWrap.innerHTML = goods.join('');
 			this.countGoods();
+			this.updateLocal();
+		},
+		updateLocal(){
+			localStorage.setItem('cart', JSON.stringify(this.cartGoods))
 		}
 	}
 	cart.renderCart();
@@ -44,11 +48,14 @@ const cartComponent = (selector, wrapSelector) => {
 				let good = goods.find( g => g.id === +item.dataset.id )
 				if (!good.count) {
 					good.count = 1;
-					cart.cartGoods.push(good);
 				} else if (good.count >= good.available){
-					return
+					item.disabled = true;
 				} else {
 					good.count = ++good.count
+				}
+				console.log(good.count, good.available)
+				if (!cart.cartGoods.find(g => g.id === good.id)){
+					cart.cartGoods.push(good);
 				}
 				cart.renderCart();
 			}
