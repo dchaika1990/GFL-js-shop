@@ -1,12 +1,9 @@
 import fixHeader from "./modules/fixHeader";
-import nav from "./modules/nav";
-import Calculator from "./modules/Calculator";
+import renderGoods from "./modules/renderGoods";
+import cartComponent from "./modules/renderCard";
 
 document.addEventListener('DOMContentLoaded', () =>{
     fixHeader('.page_header');
-    nav();
-    new Calculator({
-        selectorCalc: '.calculator',
-        SelectorInput: '.calculator-input'
-    }).init();
+    renderGoods('.goods');
+    cartComponent('.cart', '.cart-wrap');
 })

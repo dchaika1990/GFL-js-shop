@@ -1,26 +1,27 @@
 /*
 * Header Styles
 */
-.page_header_wrap{
-   box-shadow: 0 1px 12px 2px $borderColor;
-}
-.page_header{
+.page_header {
    z-index: 1;
    font-family: $fontHeaders;
    min-height: 78px;
-   .logo{
+   box-shadow: 0 1px 12px 2px $borderColor;
+
+   .logo {
       font-size: 45px;
       letter-spacing: 1px;
       color: $colorMain;
       text-transform: uppercase;
    }
-   &.fix-header{
+
+   &.fix-header {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
    }
-   .menu-btn{
+
+   .menu-btn {
       position: absolute;
       right: 15px;
       top: 50%;
@@ -33,15 +34,17 @@
       background-color: $colorMain;
       z-index: 3;
       transition: right .3s ease-in-out;
-      span{
+
+      span {
          width: 25px;
          height: 2px;
          background-color: $lightColor;
          display: inline-block;
          position: relative;
          transition: all .3s ease-in-out;
+
          &::before,
-         &::after{
+         &::after {
             content: '';
             position: absolute;
             width: 20px;
@@ -49,76 +52,89 @@
             left: 0;
             background-color: $lightColor;
          }
-         &::before{
+
+         &::before {
             top: -6px;
          }
-         &::after{
+
+         &::after {
             bottom: -6px;
          }
       }
-      &:hover{
+
+      &:hover {
          background-color: $colorMain2;
       }
    }
-   .nav{
+
+   .nav {
       font-size: 20px;
       letter-spacing: 1px;
-      &-item{
+
+      &-item {
          list-style: none;
-         &.active > a{
+
+         &.active > a {
             color: $colorMain;
          }
       }
-      &-menu{
+
+      &-menu {
          text-transform: uppercase;
       }
    }
 
    @media (min-width: 320px) and (max-width: 991px) {
-      .nav{
+      .nav {
          position: fixed;
          width: 0;
          height: 100%;
          z-index: 2;
          left: 0;
          top: 0;
-         background-color: rgba(0,0,0, .9);
+         background-color: rgba(0, 0, 0, .9);
          overflow-x: hidden;
          display: flex;
          align-items: center;
          justify-content: center;
          transition: all .5s ease-in-out;
-         &-menu{
+
+         &-menu {
             text-align: center;
          }
-         &-btn{
+
+         &-btn {
             position: absolute;
             right: 30px;
             top: 30px;
          }
-         &.nav-show{
+
+         &.nav-show {
             width: 100%;
          }
       }
    }
    @media (min-width: 992px) {
-      .menu-btn{
+      .menu-btn {
          display: none;
       }
-      .nav{
+      .nav {
          grid-column: span 2;
          position: relative;
-         &-menu{
+
+         &-menu {
             display: flex;
             justify-content: flex-end;
             margin-top: 10px;
          }
-         &-item{
-            &:not(:last-child){
+
+         &-item {
+            &:not(:last-child) {
                margin-right: 24px;
             }
          }
-         &-btn{
+
+         &-btn {
             display: none;
          }
       }

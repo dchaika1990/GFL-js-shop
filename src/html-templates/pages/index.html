@@ -5,31 +5,23 @@ title: "Home page",
 <%= _.template(require('./../includes/page_top.html').default)(data) %>
 <%= _.template(require('./../includes/headers/header.html').default)(data) %>
 
-<div class="divider-lg-200 divider-100"></div>
+<section class="s-py-120">
+    <div class="grid-container">
+        <div class="grid-cols-md-2 gap-50">
+            <div>
+                <h2>Product List</h2>
+                <div class="goods grid-cols-xl-2 gap-30"></div>
+            </div>
 
-<section class="grid-container">
-    <div class="calculator grid-cols-4 gap-10">
-        <input class="column-span-4 calculator-input" value="0" type="text" >
-        <button data-calc class="calculator-btn">1</button>
-        <button data-calc class="calculator-btn">2</button>
-        <button data-calc class="calculator-btn">3</button>
-        <button data-calc class="calculator-btn">+</button>
-        <button data-calc class="calculator-btn">4</button>
-        <button data-calc class="calculator-btn">5</button>
-        <button data-calc class="calculator-btn">6</button>
-        <button data-calc class="calculator-btn">-</button>
-        <button data-calc class="calculator-btn">7</button>
-        <button data-calc class="calculator-btn">8</button>
-        <button data-calc class="calculator-btn">9</button>
-        <button data-calc class="calculator-btn">/</button>
-        <button data-calc class="calculator-btn">0</button>
-        <button data-calc class="calculator-btn">.</button>
-        <button data-percent class="calculator-btn">%</button>
-        <button data-calc class="calculator-btn">*</button>
-        <button data-back class="calculator-btn">BS</button>
-        <button data-clear class="calculator-btn">c</button>
-        <button data-render class="calculator-btn column-span-2">=</button>
+            <div>
+                <h2>Product Cart</h2>
+                <div class="cart">
+                    <h2 class="cart-count"></h2>
+                    <div class="cart-wrap"></div>
+                    <div class="cart-total"></div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
-<div class="divider-60"></div>
 <%= _.template(require('./../includes/page_bottom.html').default)(data) %>
