@@ -18,11 +18,40 @@ const cartComponent = (selector) => {
 		renderCart() {
 			cartWrap.textContent = '';
 			let templateCartItem = makeRender('.templateCartItem');
-			const goods = this.cartGoods.map((data) => templateCartItem(data))
+			const cartItems = this.cartGoods.map((data) => templateCartItem(data))
 			totalWrap.textContent = `Total ${this.totalPrice()}`;
-			cartWrap.innerHTML = goods.join('');
+			cartWrap.innerHTML = cartItems.join('');
 			this.countGoods();
 			this.updateLocal();
+		},
+		deleteGoods(id) {
+			this.cartGoods = this.cartGoods.filter(good => id !== good.id);
+			this.renderCart();
+		},
+		plusGood(handler, id){
+			this.cartGoods.forEach(item => {
+				if (item.id === id) item.count++;
+				if (item.count > item.available) handler.disabled = true;
+			})
+			this.renderCart();
+		},
+		minusGood(id){
+			this.cartGoods.forEach(item => {
+				(item.id === id)
+					? (item.count <= 1) ? this.deleteGoods(id) : item.count--
+					: null;
+			})
+			this.renderCart();
+		},
+		addCartGoods(handler ,id){
+			let cartItem = goods.find(g => g.id === +id)
+			if (!this.cartGoods.find(g => g.id === cartItem.id)) {
+				if (!cartItem.count) cartItem.count = 1;
+				this.cartGoods.push(cartItem);
+				this.renderCart();
+			} else {
+				this.plusGood(handler, id)
+			}
 		},
 		updateLocal() {
 			localStorage.setItem('cart', JSON.stringify(this.cartGoods))
@@ -32,22 +61,11 @@ const cartComponent = (selector) => {
 
 	document.addEventListener('click', (e) => {
 		let item = e.target;
+
 		if (item) {
-			if (item.hasAttribute('data-add-cart')) {
-				let good = goods.find(g => g.id === +item.dataset.id)
-				if (!good.count) {
-					good.count = 1;
-				} else if (good.count >= good.available) {
-					item.disabled = true;
-				} else {
-					good.count = ++good.count
-				}
-				console.log(good.count, good.available)
-				if (!cart.cartGoods.find(g => g.id === good.id)) {
-					cart.cartGoods.push(good);
-				}
-				cart.renderCart();
-			}
+			if (item.hasAttribute('data-add-cart')) cart.addCartGoods(item, +item.dataset.id);
+			if (item.hasAttribute('data-plus')) cart.plusGood(item, +item.parentNode.parentNode.dataset.id);
+			if (item.hasAttribute('data-minus')) cart.minusGood(+item.parentNode.parentNode.dataset.id);
 		}
 	})
 }
