@@ -20,7 +20,7 @@ const cartComponent = (selector) => {
 			cartWrap.textContent = '';
 			let templateCartItem = makeRender('.templateCartItem');
 			const cartItems = this.cartGoods.map((data) => templateCartItem(data))
-			totalWrap.textContent = `Total ${this.totalPrice()}`;
+			totalWrap.textContent = `Total ${this.totalPrice().toFixed(2)}`;
 			cartWrap.innerHTML = cartItems.join('');
 			this.countGoods();
 			this.updateLocal();
@@ -42,8 +42,8 @@ const cartComponent = (selector) => {
 			this.cartGoods.forEach(item => {
 				if (item.id === id) {
 					if (item.count <= 1) this.deleteGoods(id);
-					emitter.emit('event:change-item', item)
 					item.count--;
+					emitter.emit('event:change-item', item)
 				}
 			})
 			this.renderCart();
