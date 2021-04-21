@@ -1,13 +1,14 @@
 import makeRender from "../services/render";
+import {getStore, setStore} from "../services/store";
 
 const cartComponent = (selector) => {
 	const selectCart = document.querySelector(selector);
 	const cartWrap = selectCart.querySelector('.cart-wrap');
 	const totalWrap = selectCart.querySelector('.cart-total');
-	const goods = JSON.parse(localStorage.getItem('goods'));
+	const goods = getStore('goods');
 
 	const cart = {
-		cartGoods: localStorage.cart ? JSON.parse(localStorage.getItem('cart')) : [],
+		cartGoods: getStore('cart'),
 		countGoods() {
 			const count = this.cartGoods.reduce((sum, good) => sum + good.count, 0);
 			selectCart.querySelector('.cart-count').textContent = `Cart (${count})`;
@@ -30,16 +31,18 @@ const cartComponent = (selector) => {
 		},
 		plusGood(handler, id){
 			this.cartGoods.forEach(item => {
-				if (item.id === id) item.count++;
-				if (item.count > item.available) handler.disabled = true;
+				if (item.id === id) {
+					if (item.count > item.available) return handler.disabled = true;
+					item.count++
+				}
 			})
 			this.renderCart();
 		},
 		minusGood(id){
 			this.cartGoods.forEach(item => {
-				(item.id === id)
-					? (item.count <= 1) ? this.deleteGoods(id) : item.count--
-					: null;
+				if (item.id === id) {
+					(item.count <= 1) ? this.deleteGoods(id) : item.count--;
+				}
 			})
 			this.renderCart();
 		},
@@ -54,7 +57,7 @@ const cartComponent = (selector) => {
 			}
 		},
 		updateLocal() {
-			localStorage.setItem('cart', JSON.stringify(this.cartGoods))
+			setStore('cart', this.cartGoods);
 		}
 	}
 	cart.renderCart();
