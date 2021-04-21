@@ -39,7 +39,7 @@ const cartComponent = (selector) => {
 			localStorage.setItem('cart', JSON.stringify(this.cartGoods))
 		}
 	}
-	cart.renderCart();
+	// cart.renderCart();
 
 	document.addEventListener('click', (e)=> {
 		let item = e.target;

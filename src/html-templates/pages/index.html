@@ -24,4 +24,14 @@ title: "Home page",
         </div>
     </div>
 </section>
+<script class="templateGoodItem" type="text/template">
+    <div data-available="${data.available}" class="good">
+        <h3 class="good-name">${data.name}</h3>
+        <p>Some short description</p>
+        <div class="good-price-wrap">
+            <span class="good-price">${data.price}</span>
+            <button data-id="${data.id}" data-add-cart class="btn btn-maincolor">Add to card</button>
+        </div>
+    </div>
+</script>
 <%= _.template(require('./../includes/page_bottom.html').default)(data) %>
