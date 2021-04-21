@@ -7,9 +7,7 @@ const renderGoods = (select) => {
 		.then(res => template(res))
 	function template(arr) {
 		let templateGoodItem = makeRender('.templateGoodItem');
-		let template = arr.map((data) => {
-			return templateGoodItem(data)
-		})
+		let template = arr.map((data) => templateGoodItem(data))
 		goodsWrap.innerHTML = template.join('')
 	}
 }
