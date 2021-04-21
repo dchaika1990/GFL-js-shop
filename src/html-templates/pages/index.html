@@ -40,7 +40,7 @@ title: "Home page",
     <div class="cart-item" data-id="${data.id}" data-available="${data.available}">
         <div class="cart-item-top">
             <h5 class="cart-item-name">${data.name}</h5>
-            <span class="cart-item-price">${data.price}</span>
+            <span class="cart-item-price">$${data.price * data.count}</span>
         </div>
         <div class="cart-item-bottom">
             <button data-minus class="btn cart-item-minus">-</button>

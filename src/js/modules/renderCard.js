@@ -6,7 +6,6 @@ const cartComponent = (selector) => {
 	const selectCart = document.querySelector(selector);
 	const cartWrap = selectCart.querySelector('.cart-wrap');
 	const totalWrap = selectCart.querySelector('.cart-total');
-	let goods = getStore('goods') || [];
 
 	const cart = {
 		cartGoods: getStore('cart'),
@@ -43,8 +42,8 @@ const cartComponent = (selector) => {
 			this.cartGoods.forEach(item => {
 				if (item.id === id) {
 					if (item.count <= 1) this.deleteGoods(id);
-					item.count--;
 					emitter.emit('event:change-item', item)
+					item.count--;
 				}
 			})
 			this.renderCart();

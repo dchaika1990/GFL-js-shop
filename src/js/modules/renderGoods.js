@@ -19,7 +19,6 @@ const renderGoods = (select) => {
 				goods = res;
 				template(res);
 			})
-
 	}
 
 	emitter.subscribe('event:change-item', item => {
