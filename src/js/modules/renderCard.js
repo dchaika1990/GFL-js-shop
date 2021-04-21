@@ -1,5 +1,5 @@
 import makeRender from "../services/render";
-import {getStore, renderStore, setStore} from "../services/store";
+import {getStore, setStore} from "../services/store";
 import emitter from "../services/emitter";
 
 const cartComponent = (selector) => {

@@ -1,5 +1,5 @@
 import {getGoods} from "../services/request";
-import {setStore, getStore, renderStore} from "../services/store";
+import {setStore, getStore} from "../services/store";
 import makeRender from "../services/render";
 import emitter from "../services/emitter";
 
