@@ -30,7 +30,9 @@ title: "Home page",
         <p>Some short description</p>
         <div class="good-price-wrap">
             <span class="good-price">${data.price}</span>
-            <button data-id="${data.id}" data-add-cart class="btn btn-maincolor">Add to card</button>
+            ${ data.available
+                ? `<button data-id="${data.id}" data-add-cart class="btn btn-maincolor">Add to card</button>`
+                : `<button data-id="${data.id}" disabled data-add-cart class="btn btn-maincolor">No product</button>`}
         </div>
     </div>
 </script>

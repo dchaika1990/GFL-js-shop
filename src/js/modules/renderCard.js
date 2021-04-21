@@ -1,11 +1,12 @@
 import makeRender from "../services/render";
-import {getStore, setStore} from "../services/store";
+import {getStore, renderStore, setStore} from "../services/store";
+import emitter from "../services/emitter";
 
 const cartComponent = (selector) => {
 	const selectCart = document.querySelector(selector);
 	const cartWrap = selectCart.querySelector('.cart-wrap');
 	const totalWrap = selectCart.querySelector('.cart-total');
-	const goods = getStore('goods');
+	let goods = getStore('goods') || [];
 
 	const cart = {
 		cartGoods: getStore('cart'),
@@ -29,11 +30,11 @@ const cartComponent = (selector) => {
 			this.cartGoods = this.cartGoods.filter(good => id !== good.id);
 			this.renderCart();
 		},
-		plusGood(handler, id){
+		plusGood(id){
 			this.cartGoods.forEach(item => {
 				if (item.id === id) {
-					if (item.count > item.available) return handler.disabled = true;
-					item.count++
+					if (item.count < item.available) item.count++;
+					emitter.emit('event:change-item', item)
 				}
 			})
 			this.renderCart();
@@ -41,34 +42,44 @@ const cartComponent = (selector) => {
 		minusGood(id){
 			this.cartGoods.forEach(item => {
 				if (item.id === id) {
-					(item.count <= 1) ? this.deleteGoods(id) : item.count--;
+					if (item.count <= 1) this.deleteGoods(id);
+					item.count--;
+					emitter.emit('event:change-item', item)
 				}
 			})
 			this.renderCart();
 		},
-		addCartGoods(handler ,id){
-			let cartItem = goods.find(g => g.id === +id)
+		addCartGoods(cartItem){
 			if (!this.cartGoods.find(g => g.id === cartItem.id)) {
-				if (!cartItem.count) cartItem.count = 1;
+				if (!cartItem.count) cartItem.count = 0;
 				this.cartGoods.push(cartItem);
-				this.renderCart();
-			} else {
-				this.plusGood(handler, id)
 			}
+			this.plusGood(cartItem.id)
 		},
 		updateLocal() {
 			setStore('cart', this.cartGoods);
 		}
 	}
+
 	cart.renderCart();
 
 	document.addEventListener('click', (e) => {
 		let item = e.target;
-
 		if (item) {
-			if (item.hasAttribute('data-add-cart')) cart.addCartGoods(item, +item.dataset.id);
-			if (item.hasAttribute('data-plus')) cart.plusGood(item, +item.parentNode.parentNode.dataset.id);
-			if (item.hasAttribute('data-minus')) cart.minusGood(+item.parentNode.parentNode.dataset.id);
+			let id = +item.parentNode.parentNode.dataset.id;
+			if (item.hasAttribute('data-plus')) cart.plusGood(id);
+			if (item.hasAttribute('data-minus')) cart.minusGood(id);
+		}
+	})
+
+	emitter.subscribe('event:add-product', good => {
+		cart.addCartGoods(good);
+	})
+
+	window.addEventListener('storage', e => {
+		if (e.key === 'cart') {
+			cart.cartGoods = JSON.parse(e.newValue);
+			cart.renderCart()
 		}
 	})
 }

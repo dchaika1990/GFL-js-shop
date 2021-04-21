@@ -5,3 +5,7 @@ export const setStore = (key, data) => {
 export const getStore = (key) => {
 	return  localStorage[key] ? JSON.parse(localStorage.getItem(key)) : []
 }
+
+export const chekStore = (key) => {
+	return  localStorage[key]
+}
