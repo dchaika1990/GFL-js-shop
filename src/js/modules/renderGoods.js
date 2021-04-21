@@ -14,7 +14,7 @@ const renderGoods = (select) => {
 	}
 
 	function render() {
-		getGoods('http://my-json-server.typicode.com/achubirka/db/products')
+		getGoods('https://my-json-server.typicode.com/achubirka/db/products')
 			.then(res => {
 				goods = res;
 				template(res);
