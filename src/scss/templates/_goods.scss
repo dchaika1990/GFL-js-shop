@@ -2,11 +2,7 @@
    border: 1px solid $borderColor;
    border-radius: 3px;
    padding: 25px;
-   box-shadow: 0 0 0 transparent;
-   transition: all .3s ease-in-out;
-   &:hover{
-      box-shadow: 0 0 12px 3px $borderColor;
-   }
+   box-shadow: 0 0 0 0 transparent;
 
    &-price-wrap{
       border-top: 1px solid $borderColor;
